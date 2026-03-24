@@ -1,0 +1,140 @@
+﻿Python 3.14.3
+.\venv\Scripts\pip.exe
+ :   error: subprocess
+-exited-with-error
+At line:1 char:83
++ ... error.log ; .\ve
+nv\Scripts\pip.exe 
+install -q -r 
+src\backend\requirem 
+...
++                 ~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (  error: s   
+ ubprocess-exited-    
+with-error:String    
+) [], RemoteExcep    
+tion
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+  
+  Preparing metadata 
+(pyproject.toml) did 
+not run successfully.
+  exit code: 1
+  
+  [24 lines of output]
+  Python reports 
+SOABI: cp314-win_amd64
+  Computed rustc 
+target triple: 
+x86_64-pc-windows-msvc
+  Installation 
+directory: C:\Users\HP
+\AppData\Local\puccini
+alin\puccinialin\Cache
+  Rustup already 
+downloaded
+  Installing rust to C
+:\Users\HP\AppData\Loc
+al\puccinialin\puccini
+alin\Cache\rustup
+  warn: It looks like 
+you have an existing 
+rustup settings file 
+at:
+  warn: C:\Users\HP\.r
+ustup\settings.toml
+  warn: Rustup will 
+install the default 
+toolchain as 
+specified in the 
+settings file,
+  warn: instead of 
+the one inferred from 
+the default host 
+triple.
+  warn: installing 
+msvc toolchain 
+without its 
+prerequisites
+  info: profile set 
+to minimal
+  info: default host 
+triple is 
+x86_64-pc-windows-msvc
+  warn: Updating 
+existing toolchain, 
+profile choice will 
+be ignored
+  info: syncing 
+channel updates for st
+able-x86_64-pc-windows
+-msvc
+  info: default 
+toolchain set to stabl
+e-x86_64-pc-windows-ms
+vc
+  Checking if cargo 
+is installed
+  cargo 1.94.0 
+(85eff7c80 2026-01-15)
+  
+  Cargo, the Rust 
+package manager, is 
+not installed or is 
+not on PATH.
+  This package 
+requires Rust and 
+Cargo to compile 
+extensions. Install 
+it through
+  the system's 
+package manager or 
+via https://rustup.rs/
+  
+  Checking for Rust 
+toolchain....
+  Rust not found, 
+installing into a 
+temporary directory
+  [end of output]
+  
+  note: This error 
+originates from a 
+subprocess, and is 
+likely not a problem 
+with pip.
+
+[notice] A new 
+release of pip is 
+available: 25.3 -> 
+26.0.1
+[notice] To update, 
+run: C:\Users\HP\Deskt
+op\websites\personal-p
+roductivity-assistant_
+2\venv\Scripts\python.
+exe -m pip install 
+--upgrade pip
+error: metadata-genera
+tion-failed
+
+Encountered error 
+while generating 
+package metadata.
+
+pydantic-core
+
+note: This is an 
+issue with the 
+package mentioned 
+above, not pip.
+hint: See above for 
+details.

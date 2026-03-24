@@ -1,0 +1,66 @@
+Installing dependencies...
+Requirement already satisfied: fastapi in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 1)) (0.135.1)
+Requirement already satisfied: sqlalchemy in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 3)) (2.0.48)
+Requirement already satisfied: python-dotenv in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 4)) (1.2.2)
+Requirement already satisfied: argon2-cffi in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 7)) (25.1.0)
+Requirement already satisfied: requests in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 8)) (2.32.5)
+Requirement already satisfied: pydantic in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 9)) (2.12.5)
+Requirement already satisfied: pydantic-settings in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 10)) (2.13.1)
+Requirement already satisfied: uvicorn[standard] in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 2)) (0.42.0)
+Requirement already satisfied: python-jose[cryptography] in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 5)) (3.5.0)
+Requirement already satisfied: passlib[bcrypt] in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from -r src\backend\requirements.txt (line 6)) (1.7.4)
+Requirement already satisfied: starlette>=0.46.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from fastapi->-r src\backend\requirements.txt (line 1)) (0.52.1)
+Requirement already satisfied: typing-extensions>=4.8.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from fastapi->-r src\backend\requirements.txt (line 1)) (4.15.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from fastapi->-r src\backend\requirements.txt (line 1)) (0.4.2)
+Requirement already satisfied: annotated-doc>=0.0.2 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from fastapi->-r src\backend\requirements.txt (line 1)) (0.0.4)
+Requirement already satisfied: click>=7.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (8.3.1)
+Requirement already satisfied: h11>=0.8 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (0.16.0)
+Requirement already satisfied: colorama>=0.4 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (0.4.6)
+Requirement already satisfied: httptools>=0.6.3 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (0.7.1)
+Requirement already satisfied: pyyaml>=5.1 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (6.0.3)
+Requirement already satisfied: watchfiles>=0.20 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (1.1.1)
+Requirement already satisfied: websockets>=10.4 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from uvicorn[standard]->-r src\backend\requirements.txt (line 2)) (16.0)
+Requirement already satisfied: greenlet>=1 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from sqlalchemy->-r src\backend\requirements.txt (line 3)) (3.3.2)
+Requirement already satisfied: ecdsa!=0.15 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (0.19.1)
+Requirement already satisfied: rsa!=4.1.1,!=4.4,<5.0,>=4.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (4.9.1)
+Requirement already satisfied: pyasn1>=0.5.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (0.6.3)
+Requirement already satisfied: cryptography>=3.4.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (46.0.5)
+Requirement already satisfied: bcrypt>=3.1.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from passlib[bcrypt]->-r src\backend\requirements.txt (line 6)) (5.0.0)
+Requirement already satisfied: argon2-cffi-bindings in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from argon2-cffi->-r src\backend\requirements.txt (line 7)) (25.1.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from requests->-r src\backend\requirements.txt (line 8)) (3.4.6)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from requests->-r src\backend\requirements.txt (line 8)) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from requests->-r src\backend\requirements.txt (line 8)) (2.6.3)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from requests->-r src\backend\requirements.txt (line 8)) (2026.2.25)
+Requirement already satisfied: annotated-types>=0.6.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from pydantic->-r src\backend\requirements.txt (line 9)) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.5 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from pydantic->-r src\backend\requirements.txt (line 9)) (2.41.5)
+Requirement already satisfied: cffi>=2.0.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from cryptography>=3.4.0->python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (2.0.0)
+Requirement already satisfied: pycparser in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from cffi>=2.0.0->cryptography>=3.4.0->python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (3.0)
+Requirement already satisfied: six>=1.9.0 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from ecdsa!=0.15->python-jose[cryptography]->-r src\backend\requirements.txt (line 5)) (1.17.0)
+Requirement already satisfied: anyio<5,>=3.6.2 in c:\users\hp\desktop\websites\personal-productivity-assistant_2\venv\lib\site-packages (from starlette>=0.46.0->fastapi->-r src\backend\requirements.txt (line 1)) (4.12.1)
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+Initializing database...
+Initializing Python Backend Database...
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\websites\personal-productivity-assistant_2\src\backend\init_db.py", line 55, in <module>
+    init_db()
+    ~~~~~~~^^
+  File "C:\Users\HP\Desktop\websites\personal-productivity-assistant_2\src\backend\init_db.py", line 25, in init_db
+    print("\u2713 Database tables created")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 0: character maps to <undefined>
+Starting backend server...
+INFO:     Will watch for changes in these directories: ['C:\\Users\\HP\\Desktop\\websites\\personal-productivity-assistant_2']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [5516] using WatchFiles
+C:\Users\HP\Desktop\websites\personal-productivity-assistant_2\venv\Lib\site-packages\pydantic\_internal\_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'validate_by_name'
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [11624]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
