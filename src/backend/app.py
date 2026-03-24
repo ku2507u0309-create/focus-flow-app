@@ -33,6 +33,20 @@ load_dotenv()
 
 app = FastAPI(title="Personal Productivity Assistant API")
 
+# ─── CORS ──────────────────────────────────────────────────────────────────────
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://focus-flow-app-frontend-fziraupjn-ku2507u0309-creates-projects.vercel.app",
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Pydantic models for request/response
 class AssistantMessageInput(BaseModel):
     role: str
