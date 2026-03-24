@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://focus-flow-app-n96i.onrender.com/api/:path*"
+    }
+  ]
+}
