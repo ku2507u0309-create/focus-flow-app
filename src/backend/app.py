@@ -39,7 +39,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "https://focus-flow-app-frontend-fziraupjn-ku2507u0309-creates-projects.vercel.app",
+        "http://localhost:8000",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
@@ -63,22 +63,6 @@ class AssistantQueryResponse(BaseModel):
 
 # Create tables
 Base.metadata.create_all(bind=engine)
-
-
-# Configure CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173", 
-        "http://127.0.0.1:5173", 
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
-        "http://localhost:3000"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 def get_db():

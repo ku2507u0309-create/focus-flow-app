@@ -64,3 +64,7 @@ C:\Users\HP\Desktop\websites\personal-productivity-assistant_2\venv\Lib\site-pac
 INFO:     Started server process [11624]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11624]
