@@ -31,7 +31,7 @@ import {
   todayStr,
 } from "../../utils/localStorage";
 
-const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000/api");
+const API_URL = import.meta.env.PROD ? "/api" : "http://localhost:8000/api";
 
 interface ScheduleProps {
   userId: string;
