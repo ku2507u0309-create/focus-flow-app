@@ -1,0 +1,9 @@
+﻿
+> @caffeine/template-frontend@0.0.0 build
+> vite build && pnpm copy:env
+
+
+> @caffeine/template-frontend@0.0.0 copy:env C:\Users\HP\Desktop\websites\personal-productivity-assistant_2\src\frontend
+> cp env.json dist/
+
+ÔÇëELIFECYCLEÔÇë Command failed with exit code 1.
