@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface GamificationState {
   xp: number;
@@ -13,6 +13,7 @@ interface GamificationState {
   checkStreak: () => void;
   completeTask: () => void;
   addFocusMinutes: (mins: number) => void;
+  reset: () => void;
 }
 
 export const useGamificationStore = create<GamificationState>()(
@@ -68,10 +69,33 @@ export const useGamificationStore = create<GamificationState>()(
           xp: newXp,
           level: newLevel
         };
+      }),
+
+      reset: () => set({
+        xp: 0,
+        level: 1,
+        streakDays: 0,
+        lastActiveDate: '',
+        tasksCompleted: 0,
+        focusMinutes: 0
       })
     }),
     {
       name: 'focusflow-gamification',
+      storage: createJSONStorage(() => ({
+        getItem: (name) => {
+          const user = localStorage.getItem('username') || 'default';
+          return localStorage.getItem(`${name}_${user}`);
+        },
+        setItem: (name, value) => {
+          const user = localStorage.getItem('username') || 'default';
+          localStorage.setItem(`${name}_${user}`, value);
+        },
+        removeItem: (name) => {
+          const user = localStorage.getItem('username') || 'default';
+          localStorage.removeItem(`${name}_${user}`);
+        }
+      })),
     }
   )
 );

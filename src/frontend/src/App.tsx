@@ -6,6 +6,8 @@ import Dashboard from "./components/panels/Dashboard";
 import LoginPage from "./components/panels/LoginPage";
 import AIAgentOverlay from "./components/ui/AIAgentOverlay";
 import ExplorerChat from "./components/ui/ExplorerChat";
+import { useGamificationStore } from "./lib/gamificationStore";
+import { useAgentStore } from "./lib/agentStore";
 import { useGetUserSettings, BackgroundType } from "./hooks/useQueries";
 import { useMentorPresence } from "./hooks/useMentorPresence";
 import { AnimatePresence } from "motion/react";
@@ -100,6 +102,11 @@ export default function App() {
       const data = await response.json();
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", loginUsername);
+      
+      // Rehydrate local stores for this user
+      useGamificationStore.persist.rehydrate();
+      useAgentStore.persist.rehydrate();
+      
       setUsername(loginUsername);
       setIsLoggedIn(true);
       return { success: true };
@@ -131,6 +138,11 @@ export default function App() {
       const data = await response.json();
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", regUsername);
+      
+      // Rehydrate local stores for this user
+      useGamificationStore.persist.rehydrate();
+      useAgentStore.persist.rehydrate();
+
       setUsername(regUsername);
       setIsLoggedIn(true);
       return { success: true };
@@ -142,6 +154,11 @@ export default function App() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("username");
+    
+    // Rehydrate local stores to return to default/empty state
+    useGamificationStore.persist.rehydrate();
+    useAgentStore.persist.rehydrate();
+    
     setIsLoggedIn(false);
     setUsername("");
     queryClient.clear();

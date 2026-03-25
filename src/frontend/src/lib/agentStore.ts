@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import type { MentorPersonality } from './mentorEngine';
 
 export interface AgentMessage {
@@ -144,6 +144,20 @@ export const useAgentStore = create<AgentState>()(
         dailyTasks:         state.dailyTasks,
         lastPresenceCheck:  state.lastPresenceCheck,
       }),
+      storage: createJSONStorage(() => ({
+        getItem: (name) => {
+          const user = localStorage.getItem('username') || 'default';
+          return localStorage.getItem(`${name}_${user}`);
+        },
+        setItem: (name, value) => {
+          const user = localStorage.getItem('username') || 'default';
+          localStorage.setItem(`${name}_${user}`, value);
+        },
+        removeItem: (name) => {
+          const user = localStorage.getItem('username') || 'default';
+          localStorage.removeItem(`${name}_${user}`);
+        }
+      })),
     }
   )
 );
