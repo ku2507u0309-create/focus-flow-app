@@ -13,7 +13,7 @@ import { useMentorPresence } from "./hooks/useMentorPresence";
 import { AnimatePresence } from "motion/react";
 import { Bot } from "lucide-react";
 
-const API_URL = import.meta.env.PROD ? "/api" : "http://localhost:8000/api";
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000/api");
 
 export default function App() {
   const queryClient = useQueryClient();
@@ -102,11 +102,11 @@ export default function App() {
       const data = await response.json();
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", loginUsername);
-      
+
       // Rehydrate local stores for this user
       useGamificationStore.persist.rehydrate();
       useAgentStore.persist.rehydrate();
-      
+
       setUsername(loginUsername);
       setIsLoggedIn(true);
       return { success: true };
@@ -138,7 +138,7 @@ export default function App() {
       const data = await response.json();
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", regUsername);
-      
+
       // Rehydrate local stores for this user
       useGamificationStore.persist.rehydrate();
       useAgentStore.persist.rehydrate();
@@ -154,11 +154,11 @@ export default function App() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("username");
-    
+
     // Rehydrate local stores to return to default/empty state
     useGamificationStore.persist.rehydrate();
     useAgentStore.persist.rehydrate();
-    
+
     setIsLoggedIn(false);
     setUsername("");
     queryClient.clear();
@@ -208,7 +208,7 @@ export default function App() {
       ) : (
         <Dashboard onLogout={handleLogout} username={username} />
       )}
-      
+
       <AIAgentOverlay />
     </div>
   );

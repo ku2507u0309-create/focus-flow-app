@@ -55,7 +55,7 @@ export async function sendAssistantPrompt(
   const existing = loadAssistantMessages(userId);
   const pending = [...existing, userMsg];
   saveAssistantMessages(userId, pending);
-  
+
   const responseText = await queryAssistant(prompt, existing, context);
   const assistantMsg = makeMessage("assistant", responseText);
   saveAssistantMessages(userId, [...pending, assistantMsg]);
@@ -115,7 +115,7 @@ export async function queryAssistant(
   conversationHistory?: AssistantMessage[],
   context?: AssistantContext,
 ): Promise<string> {
-  const apiUrl = import.meta.env.PROD ? "/api" : "http://localhost:8000/api";
+  const apiUrl = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000/api");
 
   const token = localStorage.getItem("authToken");
   if (!token) {

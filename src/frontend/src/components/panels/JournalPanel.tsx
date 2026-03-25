@@ -16,7 +16,7 @@ import {
 } from "../../utils/assistant";
 import { useAgentStore } from "../../lib/agentStore";
 
-const API_URL = import.meta.env.PROD ? "/api" : "http://localhost:8000/api";
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000/api");
 
 interface JournalProps {
   userId: string;
@@ -62,11 +62,11 @@ export default function JournalPanel({ userId }: JournalProps) {
         `I just wrote a journal entry for ${dateStr}: ${content.slice(0, 200)}. Please give me a short summary and one suggestion to improve tomorrow. Respond directly with the summary and suggestion as if consoling me or giving me feedback. Keep it under 150 words.`,
       )
         .then((msg) => {
-           // Provide consolation based on LLM output
-           speak(msg.text.slice(0, 300) + (msg.text.length > 300 ? "..." : ""), "consolation", 8000);
+          // Provide consolation based on LLM output
+          speak(msg.text.slice(0, 300) + (msg.text.length > 300 ? "..." : ""), "consolation", 8000);
         })
         .catch(() => {
-           speak("Your entry is safe! I'm glad you're tracking your days.", "consolation", 4000);
+          speak("Your entry is safe! I'm glad you're tracking your days.", "consolation", 4000);
         });
     } else {
       speak("Your entry is safely locked away in your journal.", "consolation", 4000);
@@ -82,11 +82,11 @@ export default function JournalPanel({ userId }: JournalProps) {
   const dateLabel = isToday
     ? "Today"
     : selectedDate.toLocaleDateString("en", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      });
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
 
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
 

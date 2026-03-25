@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { useGetTasks } from "../../hooks/useQueries";
-import { getLast7DaysScores } from "../../utils/localStorage";
+import { getLast7DaysScores, getDailyScheduleCompletion, todayStr } from "../../utils/localStorage";
 
 interface GraphProps {
   userId: string;
@@ -54,9 +54,13 @@ export default function GraphPanel({ userId }: GraphProps) {
     return Math.round((done / tasks.length) * 100);
   }, [tasks]);
 
+  const scheduleCompletionPct = useMemo(() => {
+    return getDailyScheduleCompletion(userId, todayStr());
+  }, [userId]);
+
   const data = useMemo(
-    () => getLast7DaysScores(userId, taskCompletionPct),
-    [userId, taskCompletionPct],
+    () => getLast7DaysScores(userId, taskCompletionPct, scheduleCompletionPct),
+    [userId, taskCompletionPct, scheduleCompletionPct],
   );
 
   const avgScore = useMemo(() => {

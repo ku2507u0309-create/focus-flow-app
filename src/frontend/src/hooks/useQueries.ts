@@ -50,7 +50,7 @@ export interface UserProfile {
 
 // ─── API Helper ─────────────────────────────────────────────────────────────
 
-const API_URL = import.meta.env.PROD ? "/api" : "http://localhost:8000/api";
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000/api");
 
 function getToken() {
   return localStorage.getItem("authToken");
@@ -86,7 +86,7 @@ async function apiFetch(endpoint: string, options: RequestInit = {}) {
     try {
       const err = await res.json();
       msg = err.detail || msg;
-    } catch {}
+    } catch { }
     throw new Error(msg);
   }
   return res.json();

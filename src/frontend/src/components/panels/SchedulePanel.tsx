@@ -31,7 +31,7 @@ import {
   todayStr,
 } from "../../utils/localStorage";
 
-const API_URL = import.meta.env.PROD ? "/api" : "http://localhost:8000/api";
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000/api");
 
 interface ScheduleProps {
   userId: string;
@@ -279,10 +279,10 @@ export default function SchedulePanel({ userId }: ScheduleProps) {
               {isToday
                 ? "Today"
                 : selectedDate.toLocaleDateString("en", {
-                    weekday: "long",
-                    month: "short",
-                    day: "numeric",
-                  })}
+                  weekday: "long",
+                  month: "short",
+                  day: "numeric",
+                })}
             </p>
             <p className="text-xs text-muted-foreground">{dateStr}</p>
           </div>
@@ -502,9 +502,8 @@ export default function SchedulePanel({ userId }: ScheduleProps) {
                     {/* Title + time */}
                     <div className="flex-1 min-w-0">
                       <p
-                        className={`text-sm font-medium text-foreground ${
-                          done ? "line-through text-muted-foreground" : ""
-                        }`}
+                        className={`text-sm font-medium text-foreground ${done ? "line-through text-muted-foreground" : ""
+                          }`}
                       >
                         {item.title}
                       </p>
