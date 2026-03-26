@@ -103,9 +103,7 @@ export default function App() {
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", loginUsername);
       
-      // Wipe memory state FIRST, then rehydrate for this specific user
-      useGamificationStore.getState().reset();
-      useAgentStore.getState().resetMentor();
+      // Rehydrate the store securely (it will fetch the pre-existing bucket or leave it as default if new)
       useGamificationStore.persist.rehydrate();
       useAgentStore.persist.rehydrate();
       
@@ -141,9 +139,7 @@ export default function App() {
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", regUsername);
       
-      // Wipe memory state FIRST, then rehydrate for this specific user
-      useGamificationStore.getState().reset();
-      useAgentStore.getState().resetMentor();
+      // Rehydrate the store securely
       useGamificationStore.persist.rehydrate();
       useAgentStore.persist.rehydrate();
 
@@ -215,7 +211,7 @@ export default function App() {
         <Dashboard onLogout={handleLogout} username={username} />
       )}
 
-      <AIAgentOverlay />
+      {isLoggedIn && <AIAgentOverlay />}
     </div>
   );
 }

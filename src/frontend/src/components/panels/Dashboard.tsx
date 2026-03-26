@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useQueryClient } from "@tanstack/react-query";
 import { 
   BarChart2, Bell, BookOpen, Brain, CalendarDays, CheckSquare, Clock, Flame, Home, Menu, 
-  MessageSquare, Music, Palette, Star, Target, Zap, MoreHorizontal, PlusCircle, Loader2 
+  MessageSquare, Music, Palette, Star, Target, Zap, MoreHorizontal, PlusCircle, Loader2, Timer
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState, useRef } from "react";
@@ -161,12 +161,16 @@ export default function Dashboard({ onLogout, username }: DashboardProps) {
       {/* Nav */}
       <nav className="flex-1 px-3 py-1 overflow-y-auto space-y-4 min-h-0">
         <div className="space-y-0.5">
-          {NAV_ITEMS.filter(i => i.group === 'main').map(({ id, label, Icon }) => (
+          {NAV_ITEMS.filter(i => i.group === 'main' && i.id !== 'more').map(({ id, label, Icon }) => (
             <button key={id} onClick={() => navTo(id)} className={`nav-item w-full text-left relative ${activeSection === id ? "active" : ""}`}>
               <Icon className={`w-4 h-4 shrink-0 ${activeSection === id ? "text-primary" : "text-muted-foreground/70"}`} />
               <span className="truncate">{label}</span>
             </button>
           ))}
+          <button type="button" onClick={() => { setFocusLockActive(true); setSidebarOpen(false); }} className="nav-item w-full text-left relative">
+            <Timer className="w-4 h-4 shrink-0 text-muted-foreground/70" />
+            <span className="truncate">Focus Timer</span>
+          </button>
         </div>
         
         <div className="pt-4">
@@ -326,7 +330,7 @@ export default function Dashboard({ onLogout, username }: DashboardProps) {
           <button type="button" onClick={() => setFocusLockActive(true)} title="Enter Focus Mode"
             className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-primary/10 border border-primary/20 text-primary text-xs font-bold hover:bg-primary/15 transition-all"
           >
-            <Brain className="w-3.5 h-3.5" />
+            <Timer className="w-3.5 h-3.5" />
             <span className="hidden md:inline">Focus</span>
           </button>
           <ProfileMenu username={displayName} onLogout={handleLogout} onOpenSettings={() => navTo("background")} />

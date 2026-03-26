@@ -26,7 +26,7 @@ import {
 import {
   formatDateStr,
   getDailyLog,
-  saveDailyTaskCompletion,
+  saveDailyScheduleCompletion,
   setDailyLogItem,
   todayStr,
 } from "../../utils/localStorage";
@@ -124,7 +124,7 @@ export default function SchedulePanel({ userId }: ScheduleProps) {
         i.id.toString() === itemId ? checked : !!newLog[i.id.toString()],
       ).length;
       const pct = Math.round((doneCount / sortedItems.length) * 100);
-      saveDailyTaskCompletion(userId, dateStr, pct);
+      saveDailyScheduleCompletion(userId, dateStr, pct);
     }
 
     // Track activity via Python backend API

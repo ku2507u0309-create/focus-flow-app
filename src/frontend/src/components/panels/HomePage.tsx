@@ -25,7 +25,11 @@ import {
   YAxis,
 } from "recharts";
 import { useGetTasks } from "../../hooks/useQueries";
-import { getLast7DaysScores } from "../../utils/localStorage";
+import { 
+  getLast7DaysScores, 
+  getDailyScheduleCompletion, 
+  todayStr 
+} from "../../utils/localStorage";
 import { getDailyQuote } from "../../utils/quotes";
 import { useAgentStore } from "../../lib/agentStore";
 
@@ -160,12 +164,9 @@ export default function HomePage({ userId, onNavigate }: HomePageProps) {
     return Math.round((done / tasks.length) * 100);
   }, [tasks]);
 
-  const { dailyTasks = [] } = useAgentStore();
   const scheduleCompletionPct = useMemo(() => {
-    if (dailyTasks.length === 0) return 0;
-    const done = dailyTasks.filter((t) => t.completed).length;
-    return Math.round((done / dailyTasks.length) * 100);
-  }, [dailyTasks]);
+    return getDailyScheduleCompletion(userId, todayStr());
+  }, [userId]);
 
   const chartData = useMemo(
     () => getLast7DaysScores(userId, taskCompletionPct, scheduleCompletionPct),
