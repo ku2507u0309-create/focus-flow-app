@@ -102,11 +102,13 @@ export default function App() {
       const data = await response.json();
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", loginUsername);
-
-      // Rehydrate local stores for this user
+      
+      // Wipe memory state FIRST, then rehydrate for this specific user
+      useGamificationStore.getState().reset();
+      useAgentStore.getState().resetMentor();
       useGamificationStore.persist.rehydrate();
       useAgentStore.persist.rehydrate();
-
+      
       setUsername(loginUsername);
       setIsLoggedIn(true);
       return { success: true };
@@ -138,8 +140,10 @@ export default function App() {
       const data = await response.json();
       localStorage.setItem("authToken", data.access_token);
       localStorage.setItem("username", regUsername);
-
-      // Rehydrate local stores for this user
+      
+      // Wipe memory state FIRST, then rehydrate for this specific user
+      useGamificationStore.getState().reset();
+      useAgentStore.getState().resetMentor();
       useGamificationStore.persist.rehydrate();
       useAgentStore.persist.rehydrate();
 
@@ -154,11 +158,13 @@ export default function App() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("username");
-
-    // Rehydrate local stores to return to default/empty state
+    
+    // Explicitly wipe the state memory so nothing bleeds over
+    useGamificationStore.getState().reset();
+    useAgentStore.getState().resetMentor();
     useGamificationStore.persist.rehydrate();
     useAgentStore.persist.rehydrate();
-
+    
     setIsLoggedIn(false);
     setUsername("");
     queryClient.clear();
