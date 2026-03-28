@@ -578,7 +578,7 @@ def query_assistant(
     db: Session = Depends(get_db)
 ):
     """Query Groq API for assistant response (backend proxy)"""
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY", "").strip()
     
     # Build specialized system prompts
     is_mentor = request.type == "mentor"
