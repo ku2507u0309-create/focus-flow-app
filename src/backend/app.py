@@ -758,6 +758,14 @@ def health_check():
     """Health check endpoint"""
     return {"status": "ok"}
 
+@app.get("/api/debug-key")
+def debug_key():
+    """Temporary debug endpoint to verify key presence (SAFE: only shows first 5 chars)"""
+    key = os.getenv("GROQ_API_KEY")
+    if not key:
+        return {"key_present": False, "mask": None}
+    return {"key_present": True, "mask": f"{key[:5]}...{key[-3:]}"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
