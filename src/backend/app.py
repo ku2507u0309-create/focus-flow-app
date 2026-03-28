@@ -687,7 +687,14 @@ Rules:
     
     except requests.exceptions.RequestException as e:
         err_msg = str(e)
-        print(f"Groq API error: {err_msg}")
+        global LAST_GROQ_ERROR
+        LAST_GROQ_ERROR = err_msg
+        print(f"DEBUG: Groq API Error Type: {type(e).__name__}")
+        print(f"DEBUG: Groq API Error Message: {err_msg}")
+        if hasattr(e, 'response') and e.response is not None:
+            print(f"DEBUG: Groq API Response Status: {e.response.status_code}")
+            print(f"DEBUG: Groq API Response Body: {e.response.text}")
+            LAST_GROQ_ERROR = f"Status {e.response.status_code}: {e.response.text}"
         
         # Fallback response if the API is completely unreachable
         fallback_msg = "I'm having a bit of trouble connecting to my neural network right now, but I'm still here cheering for you!"
@@ -758,13 +765,17 @@ def health_check():
     """Health check endpoint"""
     return {"status": "ok"}
 
+# Global variable to store last error for debugging
+LAST_GROQ_ERROR = None
+
 @app.get("/api/debug-key")
 def debug_key():
-    """Temporary debug endpoint to verify key presence (SAFE: only shows first 5 chars)"""
+    """Temporary debug endpoint to verify key presence and see last error"""
     key = os.getenv("GROQ_API_KEY")
+    global LAST_GROQ_ERROR
     if not key:
-        return {"key_present": False, "mask": None}
-    return {"key_present": True, "mask": f"{key[:5]}...{key[-3:]}"}
+        return {"key_present": False, "mask": None, "last_error": LAST_GROQ_ERROR}
+    return {"key_present": True, "mask": f"{key[:5]}...{key[-3:]}", "last_error": LAST_GROQ_ERROR}
 
 if __name__ == "__main__":
     import uvicorn
